@@ -92,6 +92,10 @@ public class HammingDist extends JFrame
 		this.add(panel0);	
 	}
 	
+	/**
+	 * Method to set the image and its location
+	 * @throws IOException
+	 */
 	private void setImage() throws IOException 
 	{
 		img = ImageIO.read(new File("pro1.jpg"));
