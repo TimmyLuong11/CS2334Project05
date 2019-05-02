@@ -10,7 +10,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -25,7 +24,12 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
+/**
+ * Class to represent the GUI and all of it functionality
+ * 
+ * @author Timothy
+ * @version 05/02/2019
+ */
 public class HammingDist extends JFrame
 {
 	private JPanel panel0 = new JPanel(new BorderLayout()); 
