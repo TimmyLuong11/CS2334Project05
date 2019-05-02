@@ -306,6 +306,9 @@ public class HammingDist extends JFrame
 		list.setBounds(145, 410, 70, 20);
 	}
 	
+	/**
+	 * Method to set the slider location
+	 */
 	private void setSlider() 
 	{
 		slider.setBounds(10, 25, 200, 50);
