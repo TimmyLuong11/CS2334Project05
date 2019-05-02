@@ -276,6 +276,10 @@ public class HammingDist extends JFrame
 		distBox4.setBounds(150, 660, 100, 20);
 	}
 	
+	/**
+	 * Method to set the combo box
+	 * @throws IOException
+	 */
 	private void setComboBox() throws IOException 
 	{
 		BufferedReader input = new BufferedReader(new FileReader("Mesonet.txt"));
