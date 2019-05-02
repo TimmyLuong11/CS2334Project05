@@ -328,6 +328,9 @@ public class HammingDist extends JFrame
 		});
 	}
 	
+	/**
+	 * Method to set the frame size
+	 */
 	private void initFrame() 
 	{
 		setTitle("Hamming Distance");
