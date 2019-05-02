@@ -168,7 +168,7 @@ public class HammingDist extends JFrame
 					{
 						for(int here = 0; here < ham1.size(); ++here) 
 						{
-							showStationBox.append(ham1.get(here)+ '\n');
+							showStationBox.append(ham1.get(here) + '\n');
 						}
 					}
 					else if(slider.getValue()==2) 
@@ -182,14 +182,14 @@ public class HammingDist extends JFrame
 					{
 						for(int here = 0; here < ham3.size(); ++here) 
 						{
-							showStationBox.append(ham3.get(here)+ '\n');
+							showStationBox.append(ham3.get(here) + '\n');
 						}
 					}
 					else if(slider.getValue()==4) 
 					{
 						for(int here = 0; here < ham4.size(); ++here)
 						{
-							showStationBox.append(ham4.get(here)+ '\n');
+							showStationBox.append(ham4.get(here) + '\n');
 						}
 					}
 			}
@@ -289,7 +289,7 @@ public class HammingDist extends JFrame
 		}
 		catch (FileNotFoundException e)
 		{
-		    System.err.println("Error, file Mesonet.txt didn't exist.");
+		    System.out.println("Error, file Mesonet.txt didn't exist.");
 		}
 		finally 
 		{
