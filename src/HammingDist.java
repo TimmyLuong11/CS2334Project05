@@ -103,6 +103,9 @@ public class HammingDist extends JFrame
 		pic.setBounds(300, 15, 400, 533);
 	}
 	
+	/**
+	 * Method to set the buttons location and aciton
+	 */
 	private void setButton() 
 	{
 		showStation.setBounds(17, 100, 115, 25);
