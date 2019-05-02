@@ -244,6 +244,9 @@ public class HammingDist extends JFrame
 		scrollPane.setBounds(25, 150, 200, 250);
 	}
 	
+	/**
+	 * Method to set the text and text box location 
+	 */
 	private void setText() 
 	{
 		inputTextField.setText("ZERO");
