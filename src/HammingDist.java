@@ -2,14 +2,18 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -48,6 +52,8 @@ public class HammingDist extends JFrame
 	private JComboBox<String> list;
 	private JTextArea showStationBox = new JTextArea(20,12);
 	private JScrollPane scrollPane = new JScrollPane(showStationBox);
+	private BufferedImage img;
+	private JLabel pic;
 	
 	public HammingDist() throws IOException
 	{
@@ -56,6 +62,7 @@ public class HammingDist extends JFrame
 		setSlider();
 		setText();
 		setComboBox();
+		setImage();
 		panel1.add(showStation);
 		panel1.add(calHD);
 		panel1.add(addStation);
@@ -76,8 +83,16 @@ public class HammingDist extends JFrame
 		panel1.add(inputTextField);
 		panel1.add(list);
 		panel1.add(scrollPane);
+		panel1.add(pic);
 		panel0.add(panel1);	
 		this.add(panel0);	
+	}
+	
+	private void setImage() throws IOException 
+	{
+		img = ImageIO.read(new File("pro1.jpg"));
+		pic = new JLabel(new ImageIcon(img));
+		pic.setBounds(300, 15, 400, 533);
 	}
 	
 	private void setButton() 
@@ -100,23 +115,22 @@ public class HammingDist extends JFrame
 				String word = (String)list.getSelectedItem();
 				String[] wordSplit = word.split("");
 				ArrayList<String> mesoNow = new ArrayList<String>();
-				int[] hamCounts = new int[5];
 
-				for(int index = 0 ; index < list.getItemCount(); index++) 
+				for(int index = 0 ; index < list.getItemCount(); ++index) 
 				{
 					mesoNow.add(list.getItemAt(index));
 				}
 				
 				
-				for(int index = 0; index < mesoNow.size(); index++)
+				for(int index = 0; index < mesoNow.size(); ++index)
 				{
 					int counter = 0;
 					String[] secondSplit = mesoNow.get(index).split("");
-					for(int jndex = 0; jndex < wordSplit.length; jndex++) 
+					for(int jndex = 0; jndex < wordSplit.length; ++jndex) 
 					{
 						if(!(wordSplit[jndex].equals (secondSplit[jndex])))
 						{
-							counter++;
+							++counter;
 						}
 					}	
 					
@@ -140,28 +154,28 @@ public class HammingDist extends JFrame
 				}
 					if(slider.getValue()==1) 
 					{
-						for(int here = 0; here < ham1.size(); here++) 
+						for(int here = 0; here < ham1.size(); ++here) 
 						{
 							showStationBox.append(ham1.get(here)+ '\n');
 						}
 					}
 					else if(slider.getValue()==2) 
 					{
-						for(int here = 0; here < ham2.size(); here++)
+						for(int here = 0; here < ham2.size(); ++here)
 						{
 							showStationBox.append(ham2.get(here) + '\n');
 						}
 					}
 					else if(slider.getValue()==3) 
 					{
-						for(int here = 0; here < ham3.size(); here++) 
+						for(int here = 0; here < ham3.size(); ++here) 
 						{
 							showStationBox.append(ham3.get(here)+ '\n');
 						}
 					}
 					else if(slider.getValue()==4) 
 					{
-						for(int here = 0; here < ham4.size(); here++)
+						for(int here = 0; here < ham4.size(); ++here)
 						{
 							showStationBox.append(ham4.get(here)+ '\n');
 						}
@@ -179,19 +193,19 @@ public class HammingDist extends JFrame
 				ArrayList<String> mesoNow = new ArrayList<String>();
 				int[] hamCounts = new int[5];
 
-				for(int index = 0 ; index < list.getItemCount(); index++) 
+				for(int index = 0 ; index < list.getItemCount(); ++index) 
 				{
 					mesoNow.add(list.getItemAt(index));
 				}
-				for(int index = 0; index < mesoNow.size(); index++) 
+				for(int index = 0; index < mesoNow.size(); ++index) 
 				{
 					int counter = 0;
 					String[] secondSplit = mesoNow.get(index).split("");
-					for(int jndex = 0; jndex < wordSplit.length; jndex++) 
+					for(int jndex = 0; jndex < wordSplit.length; ++jndex) 
 					{
 						if(!(wordSplit[jndex].equals (secondSplit[jndex])))
 						{
-							counter++;
+							++counter;
 						}
 					}	
 					hamCounts[counter] = hamCounts[counter] + 1;
