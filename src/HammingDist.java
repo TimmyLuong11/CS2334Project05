@@ -1,8 +1,15 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -34,13 +41,15 @@ public class HammingDist extends JFrame
 	private JLabel valueTextField = new JLabel();
 	private Color lightBlue = new Color(51,153,225);
 	private JTextField inputTextField = new JTextField(10);
+	private JComboBox<String> list;
 	
-	public HammingDist()
+	public HammingDist() throws IOException
 	{
 		initFrame();
 		setButton();
 		setSlider();
 		setText();
+		setComboBox();
 		panel1.add(showStation);
 		panel1.add(calHD);
 		panel1.add(addStation);
@@ -59,6 +68,7 @@ public class HammingDist extends JFrame
 		panel1.add(distBox4);
 		panel1.add(valueTextField);
 		panel1.add(inputTextField);
+		panel1.add(list);
 		panel0.add(panel1);	
 		this.add(panel0);	
 	}
@@ -99,6 +109,32 @@ public class HammingDist extends JFrame
 		distBox4.setBounds(150, 660, 100, 20);
 	}
 	
+	private void setComboBox() throws IOException 
+	{
+		BufferedReader input = new BufferedReader(new FileReader("Mesonet.txt"));
+		List<String> strings = new ArrayList<String>();
+		try 
+		{
+			String line = null;
+			while((line = input.readLine()) != null)
+			{
+				strings.add(line);
+			}
+		}
+		catch (FileNotFoundException e)
+		{
+		    System.err.println("Error, file Mesonet.txt didn't exist.");
+		}
+		finally 
+		{
+		    input.close();
+		}
+
+		String[] lineArray = strings.toArray(new String[]{});
+		list = new JComboBox<>(lineArray);
+		list.setBounds(145, 410, 70, 20);
+	}
+	
 	private void setSlider() 
 	{
 		slider.setBounds(10, 25, 200, 50);
@@ -126,7 +162,7 @@ public class HammingDist extends JFrame
 		setVisible(true);
 	}
 	
-	public static void main(String[] args)
+	public static void main(String[] args) throws IOException
 	{
 		HammingDist hd = new HammingDist();
 		hd.revalidate();
