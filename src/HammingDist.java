@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class HammingDist extends JFrame
 {
@@ -91,6 +93,15 @@ public class HammingDist extends JFrame
 		slider.setPaintLabels(true);
 		valueTextField.setBorder(BorderFactory.createLineBorder(lightBlue, 1));
 		valueTextField.setBounds(130, 5, 100, 20);
+		valueTextField.setText(" " + slider.getValue());
+		slider.addChangeListener(new ChangeListener()
+		{
+			@Override
+			public void stateChanged(ChangeEvent e)
+			{
+				valueTextField.setText(" " + slider.getValue());
+			}
+		});
 	}
 	
 	private void setButton() 
