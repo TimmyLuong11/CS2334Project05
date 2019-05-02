@@ -1,5 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -13,7 +15,9 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSlider;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -42,6 +46,8 @@ public class HammingDist extends JFrame
 	private Color lightBlue = new Color(51,153,225);
 	private JTextField inputTextField = new JTextField(10);
 	private JComboBox<String> list;
+	private JTextArea showStationBox = new JTextArea(20,12);
+	private JScrollPane scrollPane = new JScrollPane(showStationBox);
 	
 	public HammingDist() throws IOException
 	{
@@ -69,6 +75,7 @@ public class HammingDist extends JFrame
 		panel1.add(valueTextField);
 		panel1.add(inputTextField);
 		panel1.add(list);
+		panel1.add(scrollPane);
 		panel0.add(panel1);	
 		this.add(panel0);	
 	}
@@ -78,6 +85,138 @@ public class HammingDist extends JFrame
 		showStation.setBounds(17, 100, 115, 25);
 		calHD.setBounds(17, 450, 115, 25);
 		addStation.setBounds(17, 700, 115, 25);
+		
+		showStation.addActionListener(new ActionListener()
+		{	
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				showStationBox.setText("");
+				ArrayList<String> ham1 = new ArrayList<String>();
+				ArrayList<String> ham2 = new ArrayList<String>();
+				ArrayList<String> ham3 = new ArrayList<String>();
+				ArrayList<String> ham4 = new ArrayList<String>();
+
+				String word = (String)list.getSelectedItem();
+				String[] wordSplit = word.split("");
+				ArrayList<String> mesoNow = new ArrayList<String>();
+				int[] hamCounts = new int[5];
+
+				for(int index = 0 ; index < list.getItemCount(); index++) 
+				{
+					mesoNow.add(list.getItemAt(index));
+				}
+				
+				
+				for(int index = 0; index < mesoNow.size(); index++)
+				{
+					int counter = 0;
+					String[] secondSplit = mesoNow.get(index).split("");
+					for(int jndex = 0; jndex < wordSplit.length; jndex++) 
+					{
+						if(!(wordSplit[jndex].equals (secondSplit[jndex])))
+						{
+							counter++;
+						}
+					}	
+					
+					if(counter == 1)
+					{
+						ham1.add(mesoNow.get(index));			
+					}
+					else if(counter ==2) 
+					{
+						ham2.add(mesoNow.get(index));
+					}
+					else if(counter==3)
+					{
+						ham3.add(mesoNow.get(index));
+					}
+					else if(counter==4)
+					{
+						ham4.add(mesoNow.get(index));
+					}
+
+				}
+					if(slider.getValue()==1) 
+					{
+						for(int here = 0; here < ham1.size(); here++) 
+						{
+							showStationBox.append(ham1.get(here)+ '\n');
+						}
+					}
+					else if(slider.getValue()==2) 
+					{
+						for(int here = 0; here < ham2.size(); here++)
+						{
+							showStationBox.append(ham2.get(here) + '\n');
+						}
+					}
+					else if(slider.getValue()==3) 
+					{
+						for(int here = 0; here < ham3.size(); here++) 
+						{
+							showStationBox.append(ham3.get(here)+ '\n');
+						}
+					}
+					else if(slider.getValue()==4) 
+					{
+						for(int here = 0; here < ham4.size(); here++)
+						{
+							showStationBox.append(ham4.get(here)+ '\n');
+						}
+					}
+			}
+		});
+		
+		calHD.addActionListener(new ActionListener()
+		{	
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				String word = (String)list.getSelectedItem();
+				String[] wordSplit = word.split("");
+				ArrayList<String> mesoNow = new ArrayList<String>();
+				int[] hamCounts = new int[5];
+
+				for(int index = 0 ; index < list.getItemCount(); index++) 
+				{
+					mesoNow.add(list.getItemAt(index));
+				}
+				for(int index = 0; index < mesoNow.size(); index++) 
+				{
+					int counter = 0;
+					String[] secondSplit = mesoNow.get(index).split("");
+					for(int jndex = 0; jndex < wordSplit.length; jndex++) 
+					{
+						if(!(wordSplit[jndex].equals (secondSplit[jndex])))
+						{
+							counter++;
+						}
+					}	
+					hamCounts[counter] = hamCounts[counter] + 1;
+				}
+				distBox0.setText(Integer.toString(hamCounts[0]));
+				distBox1.setText(Integer.toString(hamCounts[1]));
+				distBox2.setText(Integer.toString(hamCounts[2]));
+				distBox3.setText(Integer.toString(hamCounts[3]));
+				distBox4.setText(Integer.toString(hamCounts[4]));
+			}
+		});
+	
+		addStation.addActionListener(new ActionListener() 
+		{ 
+			@Override 
+			public void actionPerformed(ActionEvent e)
+			{ 
+				list.addItem(inputTextField.getText());	
+			} 
+		 });
+		
+		scrollPane.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+		scrollPane.setBackground(Color.WHITE);
+		scrollPane.setOpaque(true);
+		scrollPane.setBounds(25, 150, 200, 250);
 	}
 	
 	private void setText() 
