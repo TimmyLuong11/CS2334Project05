@@ -57,8 +57,8 @@ public class HammingDist extends JFrame
 	private JComboBox<String> list;
 	private JTextArea showStationBox = new JTextArea(20,12);
 	private JScrollPane scrollPane = new JScrollPane(showStationBox);
-	private BufferedImage img;
-	private JLabel pic;
+	private BufferedImage img = ImageIO.read(new File("pro1.jpg"));;
+	private JLabel pic = new JLabel(new ImageIcon(img));
 	
 	public HammingDist() throws IOException
 	{
@@ -94,13 +94,11 @@ public class HammingDist extends JFrame
 	}
 	
 	/**
-	 * Method to set the image and its location
+	 * Method to set the image location
 	 * @throws IOException
 	 */
 	private void setImage() throws IOException 
-	{
-		img = ImageIO.read(new File("pro1.jpg"));
-		pic = new JLabel(new ImageIcon(img));
+	{	
 		pic.setBounds(300, 15, 400, 533);
 	}
 	
