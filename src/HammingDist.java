@@ -24,6 +24,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
 /**
  * Class to represent the GUI and all of it functionality
  * 
@@ -88,7 +89,7 @@ public class HammingDist extends JFrame
 		panel1.add(list);
 		panel1.add(scrollPane);
 		panel1.add(pic);
-		panel0.add(panel1);	
+		panel0.add(panel1);
 		this.add(panel0);	
 	}
 	
@@ -233,7 +234,7 @@ public class HammingDist extends JFrame
 		{ 
 			@Override 
 			public void actionPerformed(ActionEvent e)
-			{ 
+			{
 				list.addItem(inputTextField.getText());	
 			} 
 		 });
