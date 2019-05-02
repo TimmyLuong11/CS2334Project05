@@ -1,5 +1,7 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,6 +23,13 @@ public class HammingDist extends JFrame
 	private JLabel disLabel2 = new JLabel("Distance 2");
 	private JLabel disLabel3 = new JLabel("Distance 3");
 	private JLabel disLabel4 = new JLabel("Distance 4");
+	private JLabel distBox0 = new JLabel();
+	private JLabel distBox1 = new JLabel();	
+	private JLabel distBox2 = new JLabel();
+	private JLabel distBox3 = new JLabel();
+	private JLabel distBox4 = new JLabel();
+	private JLabel valueTextField = new JLabel();
+	private Color lightBlue = new Color(51,153,225);
 	
 	public HammingDist()
 	{
@@ -39,6 +48,12 @@ public class HammingDist extends JFrame
 		panel1.add(disLabel2);
 		panel1.add(disLabel3);
 		panel1.add(disLabel4);
+		panel1.add(distBox0);
+		panel1.add(distBox1);
+		panel1.add(distBox2);
+		panel1.add(distBox3);
+		panel1.add(distBox4);
+		panel1.add(valueTextField);
 		panel0.add(panel1);	
 		this.add(panel0);	
 	}
@@ -51,6 +66,21 @@ public class HammingDist extends JFrame
 		disLabel2.setBounds(15, 585, 120, 10);
 		disLabel3.setBounds(15, 625, 120, 10);
 		disLabel4.setBounds(15, 665, 120, 10);
+		
+		distBox0.setBorder(BorderFactory.createLineBorder(lightBlue, 1));
+		distBox0.setBounds(150, 495, 100, 20);
+		
+		distBox1.setBorder(BorderFactory.createLineBorder(lightBlue, 1));
+		distBox1.setBounds(150, 535, 100, 20);
+		
+		distBox2.setBorder(BorderFactory.createLineBorder(lightBlue, 1));
+		distBox2.setBounds(150, 575, 100, 20);
+		
+		distBox3.setBorder(BorderFactory.createLineBorder(lightBlue, 1));
+		distBox3.setBounds(150, 615, 100, 20);
+		
+		distBox4.setBorder(BorderFactory.createLineBorder(lightBlue, 1));
+		distBox4.setBounds(150, 660, 100, 20);
 	}
 	
 	private void setSlider() 
@@ -59,6 +89,8 @@ public class HammingDist extends JFrame
 		slider.setPaintTicks(true);
 		slider.setMajorTickSpacing(1);
 		slider.setPaintLabels(true);
+		valueTextField.setBorder(BorderFactory.createLineBorder(lightBlue, 1));
+		valueTextField.setBounds(130, 5, 100, 20);
 	}
 	
 	private void setButton() 
