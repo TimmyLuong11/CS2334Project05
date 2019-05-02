@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -32,6 +33,7 @@ public class HammingDist extends JFrame
 	private JLabel distBox4 = new JLabel();
 	private JLabel valueTextField = new JLabel();
 	private Color lightBlue = new Color(51,153,225);
+	private JTextField inputTextField = new JTextField(10);
 	
 	public HammingDist()
 	{
@@ -56,11 +58,23 @@ public class HammingDist extends JFrame
 		panel1.add(distBox3);
 		panel1.add(distBox4);
 		panel1.add(valueTextField);
+		panel1.add(inputTextField);
 		panel0.add(panel1);	
 		this.add(panel0);	
 	}
+	
+	private void setButton() 
+	{
+		showStation.setBounds(17, 100, 115, 25);
+		calHD.setBounds(17, 450, 115, 25);
+		addStation.setBounds(17, 700, 115, 25);
+	}
+	
 	private void setText() 
 	{
+		inputTextField.setText("ZERO");
+		inputTextField.setBounds(150, 700, 100, 25);
+		
 		enterHD.setBounds(10, 8, 120, 10);
 		compare.setBounds(10, 415, 120, 10);
 		distLabel0.setBounds(15, 500, 120, 10);
@@ -103,13 +117,6 @@ public class HammingDist extends JFrame
 			}
 		});
 	}
-	
-	private void setButton() 
-	{
-		showStation.setBounds(17, 100, 115, 25);
-		calHD.setBounds(17, 450, 115, 25);
-		addStation.setBounds(17, 700, 115, 25);
-	}	
 	
 	private void initFrame() 
 	{
