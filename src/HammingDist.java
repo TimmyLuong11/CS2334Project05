@@ -252,7 +252,6 @@ public class HammingDist extends JFrame
 	{
 		inputTextField.setText("ZERO");
 		inputTextField.setBounds(150, 700, 100, 25);
-		
 		enterHD.setBounds(10, 8, 120, 10);
 		compare.setBounds(10, 415, 120, 10);
 		distLabel0.setBounds(15, 500, 120, 10);
@@ -260,19 +259,14 @@ public class HammingDist extends JFrame
 		disLabel2.setBounds(15, 585, 120, 10);
 		disLabel3.setBounds(15, 625, 120, 10);
 		disLabel4.setBounds(15, 665, 120, 10);
-		
 		distBox0.setBorder(BorderFactory.createLineBorder(lightBlue, 1));
 		distBox0.setBounds(150, 495, 100, 20);
-		
 		distBox1.setBorder(BorderFactory.createLineBorder(lightBlue, 1));
 		distBox1.setBounds(150, 535, 100, 20);
-		
 		distBox2.setBorder(BorderFactory.createLineBorder(lightBlue, 1));
 		distBox2.setBounds(150, 575, 100, 20);
-		
 		distBox3.setBorder(BorderFactory.createLineBorder(lightBlue, 1));
 		distBox3.setBounds(150, 615, 100, 20);
-		
 		distBox4.setBorder(BorderFactory.createLineBorder(lightBlue, 1));
 		distBox4.setBounds(150, 660, 100, 20);
 	}
